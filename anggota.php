@@ -9,7 +9,7 @@ $no = 1;
 ?>
 
 <h1 class="mb-3">Data Anggota</h1>
-<a class="btn mb-3" style="background-color: #f8c8dc;" href="form_anggota.php">+ Input Anggota</a>
+<a class="btn mb-3" style="background-color: #f8c8dc;" href="form_anggota.php">Tambah Anggota</a>
 
 <table class="table table-bordered table-striped align-middle">
     <thead class="table-light">
@@ -33,8 +33,14 @@ $no = 1;
             <td><?= htmlspecialchars($row['no_hp'] ?? '') ?></td>
             <td><?= !empty($row['dibuat_pada']) ? date('d-m-Y H:i', strtotime($row['dibuat_pada'])) : '-' ?></td>
             <td>
-                <a href="edit_anggota.php?id=<?= $row['id_anggota'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus_anggota.php?id=<?= $row['id_anggota'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus data ini?')">Hapus</a>
+              <a href="edit_anggota.php?id=<?= $row['id_anggota'] ?>"
+                 class="btn btn-sm"
+                 style="background-color: #fdaecf; color: black;"> Edit </a>
+
+             <a href="hapus_anggota.php?id=<?= $row['id_anggota'] ?>"
+                class="btn btn-sm"
+                style="background-color: #fdc2db; color: black;"
+                onclick="return confirm('Yakin menghapus data ini?')"> Hapus </a>
             </td>
         </tr>
         <?php endwhile; ?>

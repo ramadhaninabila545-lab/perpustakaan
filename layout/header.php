@@ -1,4 +1,3 @@
-
 <?php
 $judul_halaman = $judul_halaman ?? 'Perpustakaan';
 $menu_aktif = $menu_aktif ?? 'buku';
@@ -16,24 +15,42 @@ $menu_aktif = $menu_aktif ?? 'buku';
 <body>
 
 <nav class="navbar navbar-expand-lg"
-     style="background-color: #f8c8dc;">
+     style="background-color: #fbd0e2;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="Buku.php">Perpustakaan</a>
+
+        <a class="navbar-brand" href="Buku.php">
+            Perpustakaan
+        </a>
 
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+
                 <li class="nav-item">
                     <a class="nav-link <?= $menu_aktif == 'buku' ? 'active' : '' ?>"
-                       href="Buku.php">Buku</a>
+                       href="/WEBDINAMIS/Perpustakaan/Buku.php">
+                        Buku
+                    </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link <?= $menu_aktif == 'anggota' ? 'active' : '' ?>"
+                       href="/WEBDINAMIS/Perpustakaan/anggota.php">
+                        Anggota
+                    </a>
+                </li>
+
             </ul>
         </div>
+
     </div>
 </nav>
 

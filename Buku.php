@@ -8,8 +8,9 @@ $hasil = $koneksi->query("SELECT * FROM buku ORDER BY id_buku DESC");
 $no = 1;
 ?>
 
+<div class="container">
 <h1 class="mb-3">Data Buku</h1>
-<a class="btn mb-3" style="background-color: #f8c8dc;" href="form.php">Input Buku</a>
+<a class="btn mb-3" style="background-color: #fecbe0;" href="form.php">Input Buku</a>
 
 <table class="table table-bordered table-striped align-middle">
     <thead class="table-light">
@@ -41,8 +42,13 @@ $no = 1;
                 <?php endif; ?>
             </td>
             <td>
-                <a href="edit.php?id=<?= $row['id_buku'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus.php?id=<?= $row['id_buku'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus data ini?')">Hapus</a>
+               <a href="edit.php?id=<?= $row['id_buku'] ?>"
+                class="btn btn-sm"
+                style="background-color: #f8b0ce; color: black;"> Edit </a>
+                <a href="hapus.php?id=<?= $row['id_buku'] ?>"
+                class="btn btn-sm"
+                style="background-color: #f7a0c3; color: black;"
+                onclick="return confirm('Yakin menghapus data ini?')"> Hapus </a>
             </td>
         </tr>
         <?php endwhile; ?>
@@ -54,5 +60,6 @@ $no = 1;
         <?php endif; ?>
     </tbody>
 </table>
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <?php require 'layout/footer.php'; ?>

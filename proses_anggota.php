@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
     $cek->store_result();
 
     if ($cek->num_rows > 0) {
-        echo "<script>alert('NIM sudah digunakan oleh anggota lain.'); window.location='edit_anggota.php?id=$id_anggota';</script>";
+        echo "<script>alert('NIM sudah ada'); window.location='edit_anggota.php?id=$id_anggota';</script>";
         exit;
     }
 
@@ -59,6 +59,7 @@ if (isset($_POST['update'])) {
         echo "Gagal memperbarui data: " . $koneksi->error;
     }
 }
+
 
 header("Location: anggota.php");
 exit;

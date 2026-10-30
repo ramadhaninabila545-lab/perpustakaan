@@ -1,8 +1,6 @@
 <?php
 require 'koneksi.php';
 
-// Fungsi bantu upload sampul.
-// Mengembalikan nama file, atau null jika tidak ada file yang diupload.
 function upload_sampul($file)
 {
     if ($file['error'] !== UPLOAD_ERR_OK) {
@@ -14,7 +12,21 @@ function upload_sampul($file)
     return $nama_file;
 }
 
-// =============================== BLOK 1: SIMPAN DATA BARU ===============================
+function redirect($tujuan, $tipe, $pesan)
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $_SESSION['flash'] = [
+        'tipe' => $tipe,
+        'pesan' => $pesan
+    ];
+
+    header("Location: " . $tujuan);
+    exit;
+}
+
 if (isset($_POST['submit'])) {
     $kode_buku    = trim($_POST['kode_buku']);
     $judul        = trim($_POST['judul']);
@@ -68,7 +80,7 @@ if (isset($_POST['update'])) {
             tahun_terbit = ?, stok = ?, sampul = ? 
             WHERE id_buku = ?";
         $stmt = $koneksi->prepare($sql);
-        $stmt->bind_param("sssiis", $judul, $pengarang, $penerbit, $tahun_terbit, $stok, $nama_sampul, $id_buku);
+        $stmt->bind_param("sssiisi", $judul, $pengarang, $penerbit, $tahun_terbit, $stok, $nama_sampul, $id_buku);
     } else {
         // Tidak ada sampul baru -> kolom sampul tidak diubah (total 6 parameter)
         $sql = "UPDATE buku SET judul = ?, pengarang = ?, penerbit = ?, 
